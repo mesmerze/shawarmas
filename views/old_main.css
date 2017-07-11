@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/*
+Error: Inconsistent indentation: 1 tab was used for indentation, but the rest of the document was indented using 2 spaces.
+        on line 1631 of main.css
+
+1626:     #surveillance:hover div {
+1627:       text-shadow: none; }
+1628:
+1629: /*  лишние куски витрины
+1630: #access {
+1631: 	@include box_transform("../images/sec_access.jpg", -550px, 0px, -200px, -100px);
+1632: }
+1633: #montage {
+1634: 	@include box_transform("../images/sec_montage.jpg", -300px, -50px, -600px, -100px);
+1635: 	&:hover {
+1636: 		background-color: transparent;
+
+Backtrace:
+main.css:1631
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:486:in `block in tabulate'
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:444:in `each'
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:444:in `each_with_index'
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:444:in `tabulate'
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:409:in `_to_tree'
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:391:in `run'
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/exec/base.rb:52:in `parse'
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/exec/base.rb:19:in `parse!'
+/home/mesmerize/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.4.23/bin/sass:13:in `<top (required)>'
+/home/mesmerize/.rbenv/versions/2.3.3/bin/sass:22:in `load'
+/home/mesmerize/.rbenv/versions/2.3.3/bin/sass:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Inconsistent indentation: 1 tab was used for indentation, but the rest of the document was indented using 2 spaces.\A         on line 1631 of main.css\A \A 1626:     #surveillance:hover div {\A 1627:       text-shadow: none; }\A 1628: \A 1629: /*  лишние куски витрины\A 1630: #access {\A 1631: 	@include box_transform(\"../images/sec_access.jpg\", -550px, 0px, -200px, -100px);	\A 1632: }\A 1633: #montage {\A 1634: 	@include box_transform(\"../images/sec_montage.jpg\", -300px, -50px, -600px, -100px);\A 1635: 	&:hover {\A 1636: 		background-color: transparent;"; }
+
+/*# sourceMappingURL=main.css.map */

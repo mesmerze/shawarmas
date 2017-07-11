@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: shawarmas
+  username: postgres
+  password: postgres
+  host: localhost
