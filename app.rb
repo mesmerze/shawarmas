@@ -8,42 +8,43 @@ require 'net/http'
 require 'vk'
 require './jwt.rb'
 get('/') do
-  erb :hello
+  erb :index
 end
 
 get('/login') do
-  code = params[:code] if params[:code]
-  uri = URI('https://oauth.vk.com/access_token')
-  shmarams = { client_id: 6109521,
-               client_secret: 'MsuqFHPDMEY0jpE2Jeyy',
-               redirect_uri: 'https://shawarmas.herokuapp.com/login',
-               code: code
-  }
-  uri.query = URI.encode_www_form(shmarams)
-  http = Net::HTTP.get_response(uri)
-  my_hash = JSON.parse(http.body)
-  @users = User.all
-  headers = {
-      exp: Time.now.to_i + 60 #expire in 360 seconds
+  if params[:code]
+    code = params[:code]
+    uri = URI('https://oauth.vk.com/access_token')
+    shmarams = { client_id: ENV['APP_ID'],
+                 client_secret: 'MsuqFHPDMEY0jpE2Jeyy',
+                 redirect_uri: 'https://shawarmas.herokuapp.com/login',
+                 code: code
     }
+    uri.query = URI.encode_www_form(shmarams)
+    http = Net::HTTP.get_response(uri)
+    my_hash = JSON.parse(http.body)
+    @users = User.all
+    headers = {
+        exp: Time.now.to_i + 60 #expire in 360 seconds
+      }
 
-  unless @users.where(user_id: my_hash['user_id'])
-    @user = User.new(my_hash)
-    @user.save
-    @token = JWT.encode({user_id: my_hash['user_id']},
-                         settings.signing_key,
-                         "RS256",
-                         headers)
-    session['access_token'] = @token
-  else
-    @token = JWT.encode({user_id: my_hash['user_id']},
-                         settings.signing_key,
-                         "RS256",
-                         headers)
-    session['access_token'] = @token
+    unless @users.where(user_id: my_hash['user_id'])
+      @user = User.new(my_hash)
+      @user.save
+      @token = JWT.encode({user_id: my_hash['user_id']},
+                           settings.signing_key,
+                           "RS256",
+                           headers)
+      session['access_token'] = @token
+    else
+      @token = JWT.encode({user_id: my_hash['user_id']},
+                           settings.signing_key,
+                           "RS256",
+                           headers)
+      session['access_token'] = @token
+    end
+    redirect('/index')
   end
-  redirect('/index')
-
   erb :login
 end
 

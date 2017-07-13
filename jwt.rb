@@ -34,7 +34,7 @@ helpers do
   # protected just does a redirect if we don't have a valid token
   def protected!
     return if authorized?
-    redirect to('/')
+    redirect to('/login')
   end
 
   # helper to extract the token from the session, header or request param
