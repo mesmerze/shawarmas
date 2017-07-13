@@ -24,7 +24,7 @@ get('/login') do
   my_hash = JSON.parse(http.body)
   @users = User.all
   headers = {
-      exp: Time.now.to_i + 360 #expire in 360 seconds
+      exp: Time.now.to_i + 60 #expire in 360 seconds
     }
 
   unless @users.where(user_id: my_hash['user_id'])
