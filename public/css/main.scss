@@ -1,0 +1,113 @@
+@import "./helpers/variables.scss";
+@import "./helpers/mixins.scss";
+@import "./helpers/placeholders.scss";
+@import "./helpers/fonts.scss";
+
+html, body {
+	background: url(../images/shaverma.jpg) center center no-repeat fixed;
+	background-size: cover;
+}
+.header {
+	background-color: rgba(0,0,0,0.2);
+		img {
+			display: inline-block;
+			width: 65px;
+		}
+		.nav {
+			padding: 0;
+			display: inline-block;
+		}
+		li  {
+
+			&.active a {
+				background-color: $ocean_green;
+				opacity: .5;
+				color: #fff;
+			}
+			&.active a:hover {
+				background-color: $ocean_green;
+				@include btn_transition(1s);
+			}
+			a {
+				width: 120px;
+				text-align: center;
+				border: none;
+				border-radius: 0px;
+				padding-top: 45px;
+				padding-bottom: 0px;
+				color: rgba(255,255,255,.5);
+				font-weight: 600;
+				font-size: 1.2em;
+				opacity: 0.5;
+
+					&:hover,
+					&:active {
+						background-color: $ocean_green;
+						@include btn_transition(0.5s);
+					}
+			}
+		}
+}
+h1 {
+	@extend %header;
+}
+.jumbotron {
+	background-color: transparent;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	h1 {
+		opacity: 1;
+	}
+	a { text-decoration: none; }
+	.box {
+		margin: 10px;
+		background-color: #e6e2df;
+		height: 600px;
+		color: #b2aaa4;
+		-webkit-transition: all 0.2s ease;
+		-moz-transition: all 0.2s ease;
+		background-repeat: none;
+	    .content {
+	    	font-family: "TenorSans", cursive;
+	    	position: relative;
+	    	top: 19.6%;
+            height: 70%;
+            display: none;
+            background: #f4f4f4;
+        }
+	}
+	h5 {
+		display: inline-block;
+	}
+}
+#hasan {
+	@include box_transform("../images/hasan.jpg", 0px, 0px, -100px, 0px);
+}
+#gustoza {
+	@include box_transform("../images/gustota.jpg", 0px, 0px, -100px, 0px);
+}
+#stolica {
+	@include box_transform("../images/stolica.jpg", 0px, 0px, -100px, 0px);
+	background-size: cover;
+}
+
+/*  лишние куски витрины
+#access {
+	@include box_transform("../images/sec_access.jpg", -550px, 0px, -200px, -100px);
+}
+#montage {
+	@include box_transform("../images/sec_montage.jpg", -300px, -50px, -600px, -100px);
+	&:hover {
+		background-color: transparent;
+	}
+}
+#repair {
+	@include box_transform("../images/sec_repair.jpg", -1100px, -600px, -600px, -700px);
+	&:hover {
+		color: rgba(255,255,255,1)!important;
+	}
+}*/
+.footer {
+	color: #fff;
+	padding: 30px 0;
+}
