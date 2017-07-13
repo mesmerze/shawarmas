@@ -22,7 +22,9 @@
     			</div>
     			<div class="col-md-6">
     				<ul class="nav nav-pills pull-right">
-              <%= @profile.each { |user| user['first_name'] } %>
+              <h1>
+                <%= @profile.each { |user| user['first_name'] }.first['first_name'] + " наверни шаурмы" %>
+              </h1>
     				</ul>
     			</div>
     		</div>

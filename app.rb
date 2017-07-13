@@ -53,7 +53,7 @@ get('/index') do
   Vk.app_secret = 'MsuqFHPDMEY0jpE2Jeyy'
   vk = Vk.client
   @profile = vk.request 'users.get', user_ids: @user_id
-  puts @profile.each { |user| user['first_name'] }.first
+  puts @profile.each { |user| user['first_name'] }.first['first_name']
   # puts @profile[response['id']] #=> {"response"=>[{"id"=>12345, "first_name"=>"Виталий", "last_name"=>"Михайлов"}]}
   erb :index
 end
