@@ -21,7 +21,7 @@ get('/login') do
     code = params[:code]
     uri = URI('https://oauth.vk.com/access_token')
     shmarams = { client_id: ENV['APP_ID'],
-                 client_secret: 'MsuqFHPDMEY0jpE2Jeyy',
+                 client_secret: ENV['APP_SECRET'],
                  redirect_uri: 'https://shawarmas.herokuapp.com/login',
                  code: code }
     uri.query = URI.encode_www_form(shmarams)
