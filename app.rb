@@ -6,6 +6,7 @@ require 'ostruct'
 require 'net/http'
 require 'vk'
 require './jwt.rb'
+require 'dotenv/load'
 
 get('/') do
   protected!
@@ -22,7 +23,7 @@ get('/login') do
     uri = URI('https://oauth.vk.com/access_token')
     shmarams = { client_id: ENV['APP_ID'],
                  client_secret: ENV['APP_SECRET'],
-                 redirect_uri: 'https://shawarmas.herokuapp.com/login',
+                 redirect_uri: "#{ENV['APP_LOC']}/login",
                  code: code }
     uri.query = URI.encode_www_form(shmarams)
     http = Net::HTTP.get_response(uri)
@@ -43,28 +44,17 @@ get('/login') do
   erb :login
 end
 
-post('/submit') do
-  @user = User.new(params[:user])
-  if @user.save
-    redirect('/users')
-  else
-    'Error'
-  end
-end
-
-get('/users') do
-  @users = User.all
-  erb :users
-end
-
 get('/stolica') do
+  protected!
   erb :stolica
 end
 
 get('/gustoza') do
+  protected!
   erb :gustoza
 end
 
 get('/hasan') do
+  protected!
   erb :hasan
 end

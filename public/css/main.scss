@@ -91,22 +91,6 @@ h1 {
 	background-size: cover;
 }
 
-/*  лишние куски витрины
-#access {
-	@include box_transform("../images/sec_access.jpg", -550px, 0px, -200px, -100px);
-}
-#montage {
-	@include box_transform("../images/sec_montage.jpg", -300px, -50px, -600px, -100px);
-	&:hover {
-		background-color: transparent;
-	}
-}
-#repair {
-	@include box_transform("../images/sec_repair.jpg", -1100px, -600px, -600px, -700px);
-	&:hover {
-		color: rgba(255,255,255,1)!important;
-	}
-}*/
 .footer {
 	color: #fff;
 	padding: 30px 0;
