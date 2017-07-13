@@ -16,7 +16,7 @@ get('/login') do
   uri = URI('https://oauth.vk.com/access_token')
   shmarams = { client_id: 6109521,
                client_secret: 'MsuqFHPDMEY0jpE2Jeyy',
-               redirect_uri: 'http://127.0.0.1:4567/login',
+               redirect_uri: 'https://shawarmas.herokuapp.com/login',
                code: code
   }
   uri.query = URI.encode_www_form(shmarams)
