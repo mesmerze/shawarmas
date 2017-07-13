@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-require './config/environments'
+# require './config/environments'
 require './models/user'
 require 'yaml'
 require 'ostruct'
