@@ -32,7 +32,6 @@ enable :sessions
 set :session_secret, 'super secret'
 
 helpers do
-
   # protected just does a redirect if we don't have a valid token
   def protected!
     return if authorized?
@@ -44,16 +43,10 @@ helpers do
   # to handle header or request param
   def extract_token
     # check for the access_token header
-    token = request.env['access_token']
-    return token if token
-    # or the form parameter _access_token
-    token = request['access_token']
-    return token if token
-    # or check the session for the access_token
-    token = session['access_token']
-    return token if token
-    nil
-  end
+    request.env['access_token'] ||
+      request['access_token'] ||
+      session['access_token']
+ end
 
   # check the token to make sure it is valid with our public key
   def authorized?
