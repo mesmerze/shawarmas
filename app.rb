@@ -1,12 +1,21 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'sinatra/flash'
 require './models/user'
 require 'yaml'
 require 'ostruct'
 require 'net/http'
+require 'pry'
 require 'vk'
-require './jwt.rb'
 require 'dotenv/load'
+require './jwt.rb'
+
+def vk_unavailable(uri)
+  Net::HTTP.get_response(uri)
+rescue StandardError
+  flash[:error] = 'Something went wrong! Please try again later'
+  redirect('/login')
+end
 
 get('/') do
   protected!
@@ -26,7 +35,7 @@ get('/login') do
                  redirect_uri: "#{ENV['APP_LOC']}/login",
                  code: code }
     uri.query = URI.encode_www_form(shmarams)
-    http = Net::HTTP.get_response(uri)
+    http = vk_unavailable(uri)
     my_hash = JSON.parse(http.body)
     @users = User.all
     headers = { exp: Time.now.to_i + 60 } # expire in 60 seconds

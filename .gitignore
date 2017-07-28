@@ -1,7 +1,11 @@
 /config/database.yml
+/config/environments.rb
 *.gem
 *.rbc
 *.env
+*.bak
+*.rsa
+*.pub
 /.config
 /coverage/
 /InstalledFiles

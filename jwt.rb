@@ -7,19 +7,8 @@ require 'jwt'
 # using RS256 algo
 ######
 
-signing_key_path = File.expand_path('../app.rsa', __FILE__)
-verify_key_path = File.expand_path('../app.rsa.pub', __FILE__)
-
-signing_key = ''
-verify_key = ''
-
-File.open(signing_key_path) do |file|
-  signing_key = OpenSSL::PKey.read(file)
-end
-
-File.open(verify_key_path) do |file|
-  verify_key = OpenSSL::PKey.read(file)
-end
+signing_key = OpenSSL::PKey.read(ENV['PRV_KEY'])
+verify_key = OpenSSL::PKey.read(ENV['PUB_KEY'])
 
 set :signing_key, signing_key
 set :verify_key, verify_key
@@ -37,16 +26,16 @@ helpers do
     return if authorized?
     redirect to('/login')
   end
-
   # helper to extract the token from the session, header or request param
   # if we are building an api, we would obviously want
   # to handle header or request param
+
   def extract_token
     # check for the access_token header
     request.env['access_token'] ||
       request['access_token'] ||
       session['access_token']
- end
+  end
 
   # check the token to make sure it is valid with our public key
   def authorized?
@@ -66,7 +55,7 @@ helpers do
         return false
       end
       @user_id = payload['user_id']
-    rescue JWT::DecodeError => e
+    rescue JWT::DecodeError
       puts 'DecodeError'
       return false
     end
