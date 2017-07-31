@@ -1,0 +1,44 @@
+
+    <div class="header">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-8">
+    				<img src="images/rubizza.jpg"/>
+    				<h1>SHAWARMAS</h1>
+    			</div>
+    			<div class="col-md-4">
+    				<ul class="nav nav-pills pull-right">
+    					<li class="active">
+              <a href="/">return</a>
+    					<li>
+                <a href="/logout">Logout</a>
+              </li>
+              </li>
+    				</ul>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="center-block">
+              <div class="container">
+                  <div class="span3 well">
+                     <center>
+                       <p><%= @user.profile.screen_name %></p>
+                       <%= image_tag(@user.profile.photo, style: "height: 140", class: "img-circle") %>
+                       <h3><%= @user.profile.last_name %></h3>
+                       <h3><%= @user.profile.first_name %></h3>
+                       <em><%= @user.profile.country %></em>
+                       <em><%= @user.profile.city %></em>
+              		   </center>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+

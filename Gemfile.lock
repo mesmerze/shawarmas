@@ -96,6 +96,8 @@ GEM
       sinatra (>= 1.0)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
+    sinatra-static-assets (1.0.4)
+      sinatra (>= 1.1.0)
     slop (3.6.0)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
@@ -126,6 +128,7 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord
   sinatra-flash (~> 0.3.0)
+  sinatra-static-assets (~> 1.0, >= 1.0.4)
   thin (~> 1.7, >= 1.7.2)
   vk (~> 0.6.5.53)
 
